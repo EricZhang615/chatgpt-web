@@ -22,11 +22,6 @@ RUN npm install pnpm -g
 
 WORKDIR /app
 
-<<<<<<< HEAD
-RUN npm config set registry http://registry.npmmirror.com
-
-RUN npm install pnpm -g && pnpm install && pnpm run build
-=======
 COPY /service/package.json /app
 
 COPY /service/pnpm-lock.yaml /app
@@ -36,7 +31,6 @@ RUN pnpm install
 COPY /service /app
 
 RUN pnpm build
->>>>>>> main
 
 RUN pnpm config set registry http://registry.npmmirror.com
 
@@ -46,9 +40,6 @@ FROM node:lts-alpine
 RUN npm install pnpm -g
 
 WORKDIR /app
-<<<<<<< HEAD
-RUN npm install pnpm -g --loglevel verbose && pnpm install --loglevel verbose
-=======
 
 COPY /service/package.json /app
 
@@ -61,7 +52,6 @@ COPY /service /app
 COPY --from=frontend /app/dist /app/public
 
 COPY --from=backend /app/build /app/build
->>>>>>> main
 
 EXPOSE 3002
 
